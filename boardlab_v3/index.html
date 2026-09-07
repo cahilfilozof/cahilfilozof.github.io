@@ -3,50 +3,53 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="BoardLab Pro — presentation board generator for architecture and landscape architecture students.">
+  <meta name="description" content="BoardLab Studio — architecture and landscape architecture presentation board + portfolio builder.">
   <meta name="theme-color" content="#18211d">
-  <title>BoardLab Pro — Architecture + Landscape Board Generator</title>
+  <title>BoardLab Studio — Boards + Portfolios</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="styles.css">
-  <script defer src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+  <script async src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
   <script defer src="app.js"></script>
 </head>
+
 <body>
   <div class="app-shell">
+
     <aside class="sidebar">
       <header class="brand">
         <span class="brand-mark">BL</span>
         <div>
-          <strong>BoardLab Pro</strong>
-          <small>Architecture + Landscape</small>
+          <strong>BoardLab Studio</strong>
+          <small>Landscape + Architecture</small>
         </div>
       </header>
 
+      <div class="mode-switch-wrap">
+        <div class="mode-switch" role="tablist" aria-label="Document mode">
+          <button class="active" data-mode="board" role="tab" aria-selected="true">Board</button>
+          <button data-mode="portfolio" role="tab" aria-selected="false">Portfolio</button>
+        </div>
+      </div>
+
       <div class="sidebar-scroll">
+
         <section class="panel">
-          <div class="panel-heading"><span>01</span><h2>Board setup</h2></div>
+          <div class="panel-heading"><span>01</span><h2 id="setupTitle">Board setup</h2></div>
 
           <label class="field">
-            <span>Paper size</span>
-            <select id="size">
-              <option>A0</option>
-              <option>A1</option>
-              <option selected>A2</option>
-              <option>A3</option>
-              <option>Square</option>
-              <option>16:9</option>
-            </select>
+            <span id="sizeLabel">Paper size</span>
+            <select id="size"></select>
           </label>
 
           <div class="field-pair">
             <label class="field">
               <span>Orientation</span>
               <select id="orientation">
-                <option value="landscape" selected>Landscape</option>
+                <option value="landscape">Landscape</option>
                 <option value="portrait">Portrait</option>
               </select>
             </label>
@@ -62,12 +65,12 @@
             </label>
           </div>
 
-          <p class="hint">Guide columns are visual only. They no longer reflow or break the presentation layout.</p>
+          <p class="hint">Guide columns are visual only. Changing them will not reflow or destroy your composition.</p>
 
           <div class="field-pair">
             <label class="field">
               <span>Margin</span>
-              <input id="margin" type="range" min="22" max="72" value="42">
+              <input id="margin" type="range" min="18" max="74" value="42">
             </label>
 
             <label class="field">
@@ -79,10 +82,11 @@
           <label class="field">
             <span>Visual style</span>
             <select id="theme">
-              <option value="landscape" selected>Soft Landscape</option>
+              <option value="landscape">Soft Landscape</option>
               <option value="studio">Studio White</option>
               <option value="technical">Technical</option>
               <option value="editorial">Warm Editorial</option>
+              <option value="minimal">Portfolio Minimal</option>
               <option value="dark">Dark Jury</option>
             </select>
           </label>
@@ -92,7 +96,7 @@
             <input id="accent" type="color" value="#4c6d5d">
           </label>
 
-          <div class="background-swatches" aria-label="Board background">
+          <div class="background-swatches" aria-label="Page background">
             <button class="swatch active" data-bg="#f3f0e8" style="--swatch:#f3f0e8" aria-label="Warm paper"></button>
             <button class="swatch" data-bg="#ffffff" style="--swatch:#ffffff" aria-label="White"></button>
             <button class="swatch" data-bg="#ecece7" style="--swatch:#ecece7" aria-label="Soft gray"></button>
@@ -100,53 +104,51 @@
           </div>
         </section>
 
-        <section class="panel layout-panel">
-          <div class="panel-heading"><span>02</span><h2>Layout library</h2></div>
+        <section id="pageManagerPanel" class="panel portfolio-only" hidden>
+          <div class="panel-heading"><span>02</span><h2>Portfolio pages</h2></div>
 
-          <div class="template-filters" id="templateFilters">
-            <button class="active" data-category="all">All</button>
-            <button data-category="design">Design</button>
-            <button data-category="analysis">Analysis</button>
-            <button data-category="technical">Technical</button>
-            <button data-category="planning">Planning</button>
-            <button data-category="portfolio">Portfolio</button>
+          <div class="page-actions">
+            <button id="addPage" class="btn primary">+ New page</button>
+            <button id="duplicatePage" class="btn">Duplicate</button>
           </div>
 
+          <div id="pageList" class="page-list"></div>
+
+          <div class="page-actions page-actions-bottom">
+            <button id="movePageUp" class="btn" title="Move page up">↑</button>
+            <button id="movePageDown" class="btn" title="Move page down">↓</button>
+            <button id="deletePage" class="btn danger">Delete</button>
+          </div>
+        </section>
+
+        <section class="panel layout-panel">
+          <div class="panel-heading">
+            <span id="templateSectionNumber">02</span>
+            <h2 id="templateSectionTitle">Layout library</h2>
+          </div>
+
+          <div class="template-filters" id="templateFilters"></div>
           <div class="template-library" id="templateLibrary"></div>
 
           <button class="btn secondary full" id="reapplyTemplate">Reapply current layout</button>
         </section>
 
         <section class="panel">
-          <div class="panel-heading"><span>03</span><h2>Add presentation content</h2></div>
-
-          <div class="module-library">
-            <button class="module-add" data-add="heading"><b>Heading</b><small>title + studio line</small></button>
-            <button class="module-add" data-add="text"><b>Text</b><small>concept / explanation</small></button>
-            <button class="module-add" data-add="image"><b>Image</b><small>plan / render / map</small></button>
-            <button class="module-add" data-add="analysis"><b>Analysis map</b><small>map + analysis label</small></button>
-            <button class="module-add" data-add="diagram"><b>Process diagram</b><small>concept sequence</small></button>
-            <button class="module-add" data-add="timeline"><b>Timeline</b><small>heritage / development</small></button>
-            <button class="module-add" data-add="objectives"><b>Objectives</b><small>design goals</small></button>
-            <button class="module-add" data-add="strategy"><b>Strategies</b><small>numbered decisions</small></button>
-            <button class="module-add" data-add="swot"><b>SWOT</b><small>4-quadrant analysis</small></button>
-            <button class="module-add" data-add="legend"><b>Legend</b><small>map / function legend</small></button>
-            <button class="module-add" data-add="materials"><b>Material legend</b><small>hatches + labels</small></button>
-            <button class="module-add" data-add="schedule"><b>Plant schedule</b><small>species table</small></button>
-            <button class="module-add" data-add="section"><b>Section</b><small>section / elevation</small></button>
-            <button class="module-add" data-add="beforeafter"><b>Before / After</b><small>design comparison</small></button>
-            <button class="module-add" data-add="photostrip"><b>Photo strip</b><small>3-image narrative</small></button>
-            <button class="module-add" data-add="callouts"><b>Function callouts</b><small>program icons + labels</small></button>
-            <button class="module-add" data-add="palette"><b>Palette</b><small>plant / material colors</small></button>
-            <button class="module-add" data-add="meta"><b>Project info</b><small>location / year / tools</small></button>
-            <button class="module-add" data-add="north"><b>North + scale</b><small>graphic utilities</small></button>
+          <div class="panel-heading">
+            <span id="moduleSectionNumber">03</span>
+            <h2>Add content</h2>
           </div>
+
+          <div class="module-library" id="moduleLibrary"></div>
 
           <input id="addImages" type="file" accept="image/*" multiple hidden>
         </section>
 
         <section class="panel">
-          <div class="panel-heading"><span>04</span><h2>View + export</h2></div>
+          <div class="panel-heading">
+            <span id="exportSectionNumber">04</span>
+            <h2>View + export</h2>
+          </div>
 
           <label class="toggle"><input id="grid" type="checkbox"><span>Show alignment grid</span></label>
           <label class="toggle"><input id="guides" type="checkbox" checked><span>Show module guides</span></label>
@@ -161,19 +163,20 @@
           </label>
 
           <div class="export-stack">
-            <button id="png" class="btn primary full">Export PNG</button>
+            <button id="png" class="btn primary full">Export current page PNG</button>
             <button id="print" class="btn full">Print / Save PDF</button>
             <button id="save" class="btn full">Save editable project</button>
             <label class="btn full file-label">Load project<input id="load" type="file" accept="application/json,.json" hidden></label>
           </div>
         </section>
+
       </div>
     </aside>
 
     <main class="workspace">
       <header class="topbar">
         <div>
-          <small>LIVE PRESENTATION BOARD</small>
+          <small id="workspaceLabel">LIVE PRESENTATION BOARD</small>
           <strong id="activeTemplateName">Balanced Jury</strong>
         </div>
 
@@ -190,7 +193,7 @@
       <div class="stage" id="stage">
         <div class="stage-inner" id="stageInner">
           <div class="board-shell" id="boardShell">
-            <article id="board" class="board theme-landscape guides" data-size="A2" data-orientation="landscape">
+            <article id="board" class="board theme-landscape guides" data-size="A2" data-orientation="landscape" data-mode="board">
               <div class="grid-overlay" aria-hidden="true"></div>
               <div id="content" class="board-content"></div>
             </article>
@@ -201,7 +204,7 @@
       <footer class="statusbar">
         <span>Scroll freely at any zoom level.</span>
         <span>Ctrl + mouse wheel = zoom.</span>
-        <span>Drag modules to reposition on the 12 × 16 snap grid.</span>
+        <span id="statusModeHelp">Drag modules to reposition on the 12 × 16 snap grid.</span>
       </footer>
     </main>
   </div>
@@ -209,70 +212,74 @@
   <aside id="drawer" class="drawer" aria-hidden="true">
     <header class="drawer-header">
       <div><small>SELECTED MODULE</small><strong id="drawerTitle">Edit module</strong></div>
-      <button id="close" class="icon-btn" aria-label="Close editor">×</button>
+      <button id="closeDrawer" class="icon-btn" aria-label="Close editor">×</button>
     </header>
 
     <div class="drawer-body">
-      <label class="field" id="textField">
+      <label id="moduleTextField" class="field">
         <span>Content</span>
-        <textarea id="moduleText" rows="7"></textarea>
+        <textarea id="moduleText" rows="8"></textarea>
       </label>
 
       <div class="field-pair">
         <label class="field">
           <span>Width</span>
-          <select id="moduleWidth">
-            <option value="2">2 / 12</option><option value="3">3 / 12</option><option value="4">4 / 12</option>
-            <option value="5">5 / 12</option><option value="6">6 / 12</option><option value="7">7 / 12</option>
-            <option value="8">8 / 12</option><option value="9">9 / 12</option><option value="10">10 / 12</option>
-            <option value="11">11 / 12</option><option value="12">12 / 12</option>
-          </select>
+          <input id="moduleWidth" type="number" min="1" max="12">
         </label>
 
         <label class="field">
           <span>Height</span>
-          <select id="moduleHeight">
-            <option value="1">1 row</option><option value="2">2 rows</option><option value="3">3 rows</option><option value="4">4 rows</option>
-            <option value="5">5 rows</option><option value="6">6 rows</option><option value="7">7 rows</option><option value="8">8 rows</option>
-            <option value="9">9 rows</option><option value="10">10 rows</option><option value="11">11 rows</option><option value="12">12 rows</option>
-          </select>
+          <input id="moduleHeight" type="number" min="1" max="16">
         </label>
       </div>
 
       <div class="field-pair">
         <label class="field">
-          <span>Column start</span>
+          <span>Column</span>
           <input id="moduleX" type="number" min="1" max="12">
         </label>
+
         <label class="field">
-          <span>Row start</span>
+          <span>Row</span>
           <input id="moduleY" type="number" min="1" max="16">
         </label>
       </div>
 
       <label class="field">
         <span>Alignment</span>
-        <select id="moduleAlign"><option value="start">Top / left</option><option value="center">Center</option><option value="end">Bottom / right</option></select>
+        <select id="moduleAlign">
+          <option value="start">Top / left</option>
+          <option value="center">Center</option>
+          <option value="end">Bottom / right</option>
+        </select>
       </label>
 
-      <label class="toggle"><input id="moduleBorder" type="checkbox"><span>Visible presentation border</span></label>
+      <label class="toggle"><input id="moduleBorder" type="checkbox"><span>Visible border</span></label>
 
-      <div id="singleImageTools" class="image-tools">
+      <div id="singleImageTools" class="image-tools" hidden>
         <label class="btn full file-label">Replace image<input id="replaceImage" type="file" accept="image/*" hidden></label>
-        <label class="field"><span>Image fit</span><select id="fit"><option value="cover">Cover</option><option value="contain">Contain</option></select></label>
+
+        <label class="field">
+          <span>Image fit</span>
+          <select id="fit">
+            <option value="cover">Cover</option>
+            <option value="contain">Contain</option>
+          </select>
+        </label>
       </div>
 
-      <div id="multiImageTools" class="image-tools">
-        <label class="btn full file-label">Replace module images<input id="replaceImages" type="file" accept="image/*" multiple hidden></label>
+      <div id="multiImageTools" class="image-tools" hidden>
+        <label class="btn full file-label">Replace images<input id="replaceImages" type="file" accept="image/*" multiple hidden></label>
       </div>
 
       <div class="drawer-actions">
         <button id="duplicate" class="btn">Duplicate</button>
-        <button id="delete" class="btn danger">Delete</button>
+        <button id="remove" class="btn danger">Delete</button>
       </div>
     </div>
   </aside>
 
+  <div id="printPages" class="print-pages" aria-hidden="true"></div>
   <div id="toast" class="toast" role="status"></div>
   <style id="pageStyle"></style>
 </body>
