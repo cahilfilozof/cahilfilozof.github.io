@@ -1,0 +1,6 @@
+# Keep the local design tools out of GitHub Pages' Jekyll output.
+exclude:
+  - boardlab_v3
+  - landscape-toolkit
+  - README.md
+  - vendor/README.md

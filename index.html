@@ -6,9 +6,11 @@
   <meta name="description" content="Sevde Nur Fidan — Landscape Architecture Portfolio">
   <title>Sevde Nur Fidan | Landscape Architecture</title>
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="experience.css">
 </head>
 
 <body>
+  <a class="skip-link" href="#portfolio">Skip to selected work</a>
   <nav class="site-nav" aria-label="Ana navigasyon">
     <div class="wrap nav-inner">
       <a class="brand" href="#top">Sevde Nur Fidan</a>
@@ -17,153 +19,30 @@
         <a href="#portfolio">Portfolio</a>
         <a href="#cv">CV</a>
         <a href="#about">About</a>
-        <a href="#contact">Contact</a>
+        <a href="#contact">Contact</a><button id="language-toggle" class="language-toggle" type="button" aria-label="Switch to English">EN <span aria-hidden="true">↗</span></button><button id="motion-toggle" class="motion-toggle" type="button" aria-pressed="false">Pause motion</button>
       </div>
     </div>
   </nav>
 
   <main id="top">
     <!-- HERO -->
-    <header class="wrap hero">
-      <div class="hero-copy-block">
-        <div class="eyebrow">
-          <span class="dot"></span>
-          Landscape Architecture Student
-        </div>
+    <header class="hero">
 
-        <h1>
-          Sevde Nur
-          <span class="accent">Fidan</span>
-        </h1>
-
-        <p>
-          Peyzaj mimarlığı, kamusal alan, bitkisel tasarım,
-          görselleştirme ve çevresel düşünce üzerine çalışan
-          kişisel portfolyo alanı.
-        </p>
-
-        <div class="hero-actions">
-          <a class="btn primary" href="#portfolio">View Portfolio ↓</a>
-          <a class="btn" href="#cv">View CV</a>
-        </div>
-      </div>
-
-      <div class="art" aria-hidden="true">
-        <div class="blob one"></div>
-        <div class="blob two"></div>
-        <div class="blob three"></div>
-
-        <div class="mini-card">
-          <strong>Designing spaces with character.</strong>
-          <span>Landscape • Visualisation • Creative Practice</span>
-        </div>
-      </div>
+      <div class="hero-top"><span>LANDSCAPE ARCHITECTURE</span><span>İSTANBUL / BURSA · TÜRKİYE</span></div>
+      <div id="landscape-scene" aria-hidden="true"></div><svg class="terrain" viewBox="0 0 1000 800" fill="none" aria-hidden="true"><g id="contours"></g></svg>
+      <div class="hero-title"><span class="edition">A PORTFOLIO OF PLACES & POSSIBILITIES</span><h1>SEVDE<br>NUR <span class="name-star">✳</span><br>FIDAN<span class="name-period">.</span></h1></div>
+      <div class="terrain-caption"><span>01 / LIVING TOPOGRAPHY</span><span>Ecology. People. Place.</span><small>Interactive landscape study</small></div>
+      <div class="landscape-controls" role="group" aria-label="Landscape layers"><button type="button" data-layer="terrain" aria-pressed="true">01 Terrain</button><button type="button" data-layer="ecology" aria-pressed="false">02 Planting</button><button type="button" data-layer="water" aria-pressed="false">03 Water</button></div>
+      <div class="hero-bottom"><a class="explore-link" href="#portfolio"><span class="round-arrow">↙</span> Explore selected work</a><p>Doğayla birlikte düşünen,<br>yaşamla şekillenen mekânlar.</p><span class="hero-index">SCROLL TO DISCOVER ↓</span></div>
     </header>
-
-
-    <!-- EXPLORE -->
-    <section id="links" class="section-shell">
-      <div class="wrap">
-        <div class="section-head">
-          <div>
-            <span class="section-kicker">Navigation</span>
-            <h2>Explore</h2>
-          </div>
-
-          <p>
-            Portfolio ve CV artık ayrı bir sayfa açmadan bu sayfa içinde
-            görüntülenir. İstersen PDF sürümlerini ayrıca indirebilirsin.
-          </p>
-        </div>
-
-        <div class="cards">
-          <a class="card c1" href="#portfolio">
-            <div>
-              <span class="card-number">01</span>
-              <h3>Portfolio</h3>
-              <p>Seçilmiş peyzaj projeleri ve kısa proje açıklamaları.</p>
-            </div>
-            <span class="arrow">↓</span>
-          </a>
-
-          <a class="card c2" href="#cv">
-            <div>
-              <span class="card-number">02</span>
-              <h3>CV</h3>
-              <p>Eğitim, deneyim, beceriler ve profesyonel özgeçmiş.</p>
-            </div>
-            <span class="arrow">↓</span>
-          </a>
-
-          <a
-            class="card c3"
-            href="mirsev-studio-website/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <div>
-              <span class="card-number">03</span>
-              <h3>Mirsev Studio</h3>
-              <p>Peyzaj, görselleştirme ve yaratıcı tasarım çalışmaları.</p>
-            </div>
-            <span class="arrow">↗</span>
-          </a>
-
-          <a class="card c4" href="#selected-works">
-            <div>
-              <span class="card-number">04</span>
-              <h3>Selected Works</h3>
-              <p>Portfolyodaki projeleri isimleriyle hızlıca incele.</p>
-            </div>
-            <span class="arrow">↓</span>
-          </a>
-
-          <a class="card c5" href="#about">
-            <div>
-              <span class="card-number">05</span>
-              <h3>About Me</h3>
-              <p>İlgi alanlarım ve peyzaj mimarlığına yaklaşımım.</p>
-            </div>
-            <span class="arrow">↓</span>
-          </a>
-
-          <a class="card c6" href="#contact">
-            <div>
-              <span class="card-number">06</span>
-              <h3>Contact</h3>
-              <p>Staj, proje ve profesyonel iletişim için.</p>
-            </div>
-            <span class="arrow">↓</span>
-          </a>
-          
-          <a class="card c7" href="landscape-toolkit/">
-            <div>
-              <span class="card-number">07</span>
-              <h3>Landscape Architecture Toolkit</h3>
-            </div>
-            <span class="arrow">↓</span>
-          </a>
-
-          <a class="card c8" href="boardlab_v3/">
-            <div>
-              <span class="card-number">08</span>
-              <h3>BoardLab Studio</h3>
-            </div>
-            <span class="arrov">↓</span>
-          </a>
-          
-        </div>
-      </div>
-    </section>
-
-
-    <!-- PORTFOLIO -->
+    <div class="landscape-marquee" aria-hidden="true"><div><span>LAND · LIFE · POSSIBILITY · </span><span>LAND · LIFE · POSSIBILITY · </span></div></div><section class="intro-strip wrap" aria-label="Design approach"><span class="section-kicker">THE APPROACH</span><p>Between nature<br>and <em>everyday life.</em></p><div>Peyzajı bir arka plan olarak değil, yaşamın bir parçası olarak ele alıyorum. Kamusal alan, bitkisel tasarım ve ekolojik düşünce üzerine seçilmiş çalışmalar.</div></section>
+        <!-- PORTFOLIO -->
     <section id="portfolio" class="section-shell portfolio-section">
       <div class="wrap">
         <div class="section-head">
           <div>
             <span class="section-kicker">Portfolio</span>
-            <h2>Selected Works</h2>
+            <h2>Selected<br><em>landscapes.</em><sup>(07)</sup></h2>
           </div>
 
           <div class="section-actions">
@@ -173,22 +52,7 @@
           </div>
         </div>
 
-        <div class="portfolio-intro content-panel">
-          <div>
-            <span class="big-index">07</span>
-          </div>
-
-          <div>
-            <h3>Landscape Architecture Portfolio</h3>
-            <p>
-              Akademik peyzaj tasarımı, konut peyzajı, kamusal alan,
-              konstrüksiyon, kentsel peyzaj planlama ve yarışma
-              çalışmalarından seçilmiş projeler.
-            </p>
-          </div>
-        </div>
-
-        <div id="selected-works" class="selected-works">
+        <div id="selected-works" class="selected-works"><svg class="journey-route" viewBox="0 0 100 1000" preserveAspectRatio="none" aria-hidden="true"><path d="M50 0 C95 100 5 160 50 250 S95 400 50 500 S5 650 50 750 S95 900 50 1000" pathLength="1"/></svg>
 
           <article class="work-item">
             <div class="work-heading">
@@ -503,7 +367,7 @@
       <div class="wrap">
         <div class="about-box">
           <div class="about-tag">
-            About<br>Sevde.
+            Sevde.<br><em>Fidan.</em>
           </div>
 
           <div class="about-copy">
@@ -546,5 +410,5 @@
       © 2026 Sevde Nur Fidan · Landscape Architecture
     </div>
   </footer>
-</body>
+<dialog id="project-dialog" aria-labelledby="dialog-title"><button class="dialog-close" aria-label="Close project">Close ×</button><div class="dialog-content" data-lenis-prevent><span id="dialog-type" class="section-kicker"></span><h2 id="dialog-title"></h2><img id="dialog-image" alt=""><p id="dialog-description"></p><div class="dialog-navigation"><button type="button" id="previous-project">← Previous project</button><button type="button" id="next-project">Next project →</button></div><a class="btn" href="files/Portfolio.pdf" target="_blank" rel="noopener">Explore the full portfolio ↗</a></div></dialog><div class="project-cursor" aria-hidden="true">↗</div><script src="vendor/gsap.min.js" defer></script><script src="vendor/ScrollTrigger.min.js" defer></script><script src="vendor/lenis.min.js" defer></script><script src="i18n.js" defer></script><script src="script.js" defer></script><script type="module" src="landscape.js"></script></body>
 </html>
