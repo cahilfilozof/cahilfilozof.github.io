@@ -1,0 +1,164 @@
+{
+  "3": {
+    "width": 2304,
+    "height": 1296
+  },
+  "4": {
+    "width": 2304,
+    "height": 1296
+  },
+  "5": {
+    "width": 2304,
+    "height": 1296
+  },
+  "6": {
+    "width": 2304,
+    "height": 1296
+  },
+  "7": {
+    "width": 2304,
+    "height": 1296
+  },
+  "8": {
+    "width": 2304,
+    "height": 1296
+  },
+  "9": {
+    "width": 2304,
+    "height": 1296
+  },
+  "10": {
+    "width": 2304,
+    "height": 1296
+  },
+  "11": {
+    "width": 2304,
+    "height": 1296
+  },
+  "12": {
+    "width": 2304,
+    "height": 1296
+  },
+  "13": {
+    "width": 2304,
+    "height": 1296
+  },
+  "14": {
+    "width": 2304,
+    "height": 1296
+  },
+  "15": {
+    "width": 2304,
+    "height": 1296
+  },
+  "16": {
+    "width": 2304,
+    "height": 1296
+  },
+  "17": {
+    "width": 2304,
+    "height": 1296
+  },
+  "18": {
+    "width": 2304,
+    "height": 1296
+  },
+  "19": {
+    "width": 2304,
+    "height": 1296
+  },
+  "20": {
+    "width": 2304,
+    "height": 1296
+  },
+  "21": {
+    "width": 2304,
+    "height": 1296
+  },
+  "22": {
+    "width": 2304,
+    "height": 1296
+  },
+  "23": {
+    "width": 2304,
+    "height": 1296
+  },
+  "24": {
+    "width": 2304,
+    "height": 1296
+  },
+  "25": {
+    "width": 2304,
+    "height": 1296
+  },
+  "26": {
+    "width": 2304,
+    "height": 1296
+  },
+  "canteen": {
+    "page": 3,
+    "crop": [
+      0.684,
+      0.323,
+      0.953,
+      0.643
+    ],
+    "width": 620,
+    "height": 414
+  },
+  "single-residence": {
+    "page": 5,
+    "crop": [
+      0.552,
+      0.105,
+      0.778,
+      0.641
+    ],
+    "width": 521,
+    "height": 695
+  },
+  "collective-housing": {
+    "page": 8,
+    "crop": [
+      0.025,
+      0.065,
+      0.505,
+      0.667
+    ],
+    "width": 1106,
+    "height": 780
+  },
+  "urban-square": {
+    "page": 12,
+    "crop": [
+      0.04,
+      0.05,
+      0.52,
+      0.65
+    ],
+    "width": 1106,
+    "height": 777
+  },
+  "playground-boundary": {
+    "page": 17,
+    "crop": [
+      0.13,
+      0.055,
+      0.87,
+      0.91
+    ],
+    "width": 1704,
+    "height": 1108
+  },
+  "urban-planning": {
+    "page": 24,
+    "crop": [
+      0.665,
+      0.374,
+      0.922,
+      0.63
+    ],
+    "width": 592,
+    "height": 331
+  }
+}

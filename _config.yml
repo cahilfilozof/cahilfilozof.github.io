@@ -4,3 +4,8 @@ exclude:
   - landscape-toolkit
   - README.md
   - vendor/README.md
+  - design
+  - scripts
+  - tests
+  - package.json
+  - package-lock.json

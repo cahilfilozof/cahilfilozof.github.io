@@ -1,31 +1,34 @@
-# Sevde Nur Fidan — Landscape Architecture
+# Sevde Nur Fidan — Landscape Assembly
 
-Static GitHub Pages portfolio. No React runtime or build step is required.
+Interactive landscape architecture portfolio. Seven architectural folders open into real SVG jigsaws, then reveal editorial project pages containing the original drawings and renders.
 
-## Running locally
+## Local development
 
-Serve this directory over HTTP (ES modules cannot load from `file://`). For example, with Python installed: `python -m http.server 4173`. Open http://localhost:4173.
+Run `npm run dev`, then open http://127.0.0.1:4174/. No dependency install is needed. Run `npm run build` after changing content or rendering helpers; it generates the homepage and all seven static project routes. Run `npm test` for geometry, source asset, localization and static link checks.
 
-## Experience
+## Editing
 
-- Three.js landscape study with contour shading, water ripples and terrain/planting/water controls. The terrain is illustrative, not a real project survey.
-- GSAP/ScrollTrigger image reveals, typography entrances, a scroll-drawn route and moving editorial type.
-- Lenis smooth wheel scrolling on fine-pointer devices; native touch scrolling on mobile.
-- Project image transitions, previous/next browsing, Escape dismissal and focus restoration.
-- Turkish/English site content, image descriptions and accessibility labels. Language is saved locally. Original PDF documents retain their original language.
-- Motion can be paused and the preference is saved. The operating system's reduced-motion setting takes priority. WebGL animation stops while the scene is offscreen or the tab is hidden. A contour illustration remains available without WebGL.
+- `src/projects.mjs`: bilingual project content, colors, puzzle image, piece counts, reveal treatment, and portfolio source pages.
+- `src/render.mjs`: homepage, folders, About and case-study markup. `src/cv.mjs` preserves original CV content and translations.
+- `src/geometry.mjs`: cubic jigsaw boundaries shared by adjacent pieces.
+- `src/puzzle.mjs`: Pointer Events, keyboard placement, snapping, reset, skip, hints, resizing and reveal lifecycle.
+- `src/main.mjs`: navigation, stored language/motion preferences, session progress, GSAP and Lenis.
+- `assembly.css`: responsive visual system. `design/DIRECTION.md` and `design/QA.md`: visual references and verification notes.
 
-## Files
+GSAP 3.15 and ScrollTrigger come from the user-supplied distribution. Lenis is vendored. There are no runtime CDN dependencies. Older terrain scripts and styles remain in the repository as previous-version source, but the rebuilt site does not load them.
 
-`index.html` contains the accessible content. `i18n.js` binds Turkish/English text; keep translations aligned with content edits. `script.js` manages interaction and scroll animation. `landscape.js` builds the 3D scene. `styles.css` and `experience.css` provide the base and current visual layer. Dependencies and licenses are in `vendor/`.
+## Assets and provenance
 
-BoardLab and Landscape Toolkit folders are retained locally and have no portfolio links. `_config.yml` excludes them from GitHub Pages' standard Jekyll output. If switching to a custom deployment workflow, preserve these exclusions in its upload step.
+The seven existing project renders remain unchanged. `assets/boards` contains full-resolution portfolio pages 3–26 and smaller responsive variants. `assets/plans` contains documented crops from those pages. `assets/provenance.json` records the sources. `scripts/extract-assets.py` reproduces the board extraction using pypdf and Pillow. No generated image is presented as Sevde’s work.
 
-## Reference direction
+The supplied jigsaw-profile sketch is preserved in `assets/sketches` as its original JPEG and a display WebP. PDFs and board annotations remain in Turkish; the site interface and case text switch between Turkish and English.
 
-- Bruno Simon and Lusion: an interactive spatial introduction, translated into a landscape study.
-- Obys and Aristide Benoist: oversized type, numbered work and animated image entrances.
-- Dennis Snellenberg and Locomotive: polished hover interaction and transitions.
-- Studio Freight and Burton: motion related to the subject and an image-led project presentation.
+## Interaction and access
 
-Original project images are retained. No external stock media is presented as the architect's work.
+Desktop puzzles contain 6–8 pieces, tablet 6, and phone 4. Drag with mouse/touch/pen or focus a piece and press Enter/Space to place it. Arrow keys move it; Shift gives finer movement. Skip, reset and Escape are supported. Closing restores focus. Completed projects open directly for the rest of the tab session. Direct links work without playing or without JavaScript.
+
+The motion toggle is saved locally. OS reduced motion takes precedence and removes animated scattering/reveals. The phone layout uses native page scrolling.
+
+## Hosting
+
+Generated HTML is ready for the existing GitHub Pages setup. `_config.yml` excludes local BoardLab/Toolkit, development scripts, tests and design references from Jekyll output. Preserve those exclusions if replacing Jekyll with a custom deployment workflow. There are no portfolio links to either local tool.
