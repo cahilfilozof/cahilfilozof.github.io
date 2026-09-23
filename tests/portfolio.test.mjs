@@ -43,7 +43,7 @@ test('every generated HTML local link and asset resolves; local tools stay unlin
     assert.ok(!/boardlab|landscape-toolkit/i.test(html));
     for(const [,url] of html.matchAll(/(?:src|href)="([^"]+)"/g)){
       if(/^(?:https?:|mailto:|tel:|#)/.test(url))continue;
-      assert.ok(fs.existsSync(path.resolve(path.dirname(file),url.split('#')[0])),`${file}: ${url}`);
+      assert.ok(fs.existsSync(path.resolve(path.dirname(file),url.split(/[?#]/)[0])),`${file}: ${url}`);
     }
   }
   for(const lang of ['en','tr'])assert.equal((home(lang).match(/class="project-package"/g)||[]).length,7);
@@ -62,4 +62,21 @@ test('every project offers direct exploration and optional replay, with real cha
       }
     }
   }
+});
+
+test('published entry and all transitive modules share one release fingerprint',()=>{
+  const html=fs.readFileSync('index.html','utf8');
+  const entry=html.match(/src="(release\/main\.([a-f0-9]{12})\.mjs)"/);
+  assert.ok(entry,'fingerprinted module entry');
+  const seen=new Set();
+  function visit(file){
+    if(seen.has(file))return;seen.add(file);
+    const source=fs.readFileSync(file,'utf8');
+    for(const [,dependency] of source.matchAll(/(?:from\s*|import\s*)['"](\.\/[^'"]+)['"]/g)){
+      assert.ok(dependency.endsWith(`.${entry[2]}.mjs`),dependency);
+      visit(path.resolve(path.dirname(file),dependency));
+    }
+  }
+  visit(path.resolve(entry[1]));assert.ok(seen.size>=10);
+  for(const [,css] of html.matchAll(/href="([^"]+\.css\?v=[^"]+)"/g))assert.ok(css.endsWith(`?v=${entry[2]}`));
 });
