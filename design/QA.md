@@ -1,5 +1,13 @@
 # Landscape Assembly — verification and fidelity ledger
 
+## 22 September refinement pass
+
+User requested a contained improvement pass and richer background texture. Added code-native decorative contour lines (not survey data), paper grain, drafting dots, woven About stock, clearer Explore/Assemble actions, replay, larger controls, tighter mobile hero and case-study chapter links. These are intentional user-authorized deviations from the earlier concept.
+
+Compared `hero.png` and current IAB capture `refined-hero.png` through view_image. Checked five points: (1) original headline and nav copy preserved; (2) original folder/hero composition retained; (3) pine/paper palette preserved with subtle sage/clay washes; (4) texture remains behind readable foreground content; (5) control type sizes increased intentionally. Existing native-size comparison and embedded-browser scaling limitation above still apply; this pass checked the current desktop viewport and measured mobile width of 390px without document overflow. No new ImageGen pass was needed for this bounded refinement of the existing direction.
+
+Verified direct exploration, replay after a project visit, four-piece mobile placement, close/focus restoration, animated skip-to-case, and drawing chapter scrolling (archive positioned about 90px below the viewport top). Console clean. Five automated tests pass, including all seven bilingual direct/replay controls and chapter targets. Latest build and diff checks pass. The revised implementation remains faithful to the original direction with the explicit texture/navigation adaptations; no blocking visual issue was observed. These refinements are local, not yet pushed.
+
 Verified 21 September 2026 against `hero.png`, `collection.png`, `puzzle.png`, `about.png`, and `case.png` in this directory. These are working design references, not user-approved project artwork. The adaptation rules in DIRECTION.md take precedence over invented imagery and annotations within them.
 
 ## Visual method

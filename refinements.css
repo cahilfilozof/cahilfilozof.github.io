@@ -1,0 +1,31 @@
+/* Material palette: contour paper, drafting dots and woven sketchbook stock. */
+body{background-image:radial-gradient(ellipse at 0 10%,#d6dfc74d,transparent 48%),radial-gradient(ellipse at 100% 65%,#ddc5b633,transparent 48%);background-attachment:fixed}
+body::before{opacity:.055}
+.assembly-hero::before,.contact::before{content:'';position:absolute;inset:0;z-index:-1;background:url('assets/topography.svg') right center/cover no-repeat;opacity:.35;pointer-events:none;mask-image:linear-gradient(90deg,transparent 10%,#000 60%)}
+.assembly-hero::after{content:'';position:absolute;inset:0;z-index:-1;pointer-events:none;background-image:radial-gradient(#253f3724 .65px,transparent .8px);background-size:22px 22px;mask-image:linear-gradient(115deg,transparent 30%,#000 100%)}
+.collection{background-image:linear-gradient(#f2eee699,#f2eee699),url('assets/topography.svg');background-position:0 0,-220px 120px;background-size:auto,780px auto;background-repeat:repeat,repeat-y}
+.collection-intro{padding-right:10px}.collection-intro p,.collection-intro #collection-progress{background:var(--paper);width:fit-content;padding:4px 8px 4px 0}
+.about{background-image:repeating-linear-gradient(0deg,#ffffff12 0 1px,transparent 1px 5px),repeating-linear-gradient(90deg,#253f3708 0 1px,transparent 1px 7px)}
+.cv-section{background-image:radial-gradient(#253f371a .6px,transparent .8px);background-size:18px 18px}
+.contact{position:relative;isolation:isolate;overflow:hidden}.contact::before{mask-image:radial-gradient(ellipse,transparent 20%,#000 90%);opacity:.55;background-position:center}
+.package-cover{background-image:repeating-linear-gradient(0deg,#fff0 0 3px,#ffffff13 3px 4px)}
+.package-foot{flex-wrap:wrap;align-items:center;gap:14px;font-size:12px}
+.package-status{flex:1 1 100%;font-size:11px}
+.package-foot .package-action{display:inline-flex;align-items:center;justify-content:space-between;gap:18px;min-height:46px;padding:13px 18px;border:1px solid var(--pine);font-size:12px;flex:1}
+.package-action-primary{background:var(--pine);color:var(--paper)}.package-action-secondary{background:var(--paper)}
+.package-action:hover{box-shadow:0 4px 12px #253f3720}.package-action-secondary:hover{background:var(--folder)}
+.site-header nav a,.language-toggle{font-size:13px}.motion-toggle{font-size:10px;max-width:94px}
+.package-category,.folder-tab{font-size:10px}.package-open-label{font-size:12px}
+.package-cover{grid-template-columns:minmax(0,45fr) minmax(0,55fr)}
+.case-chapters{display:flex;gap:24px;flex-wrap:wrap;padding:0 var(--gutter) 30px;font-size:12px}.case-chapters a{padding:10px 0;border-bottom:1px solid var(--line)}.case-chapters a:hover{border-color:var(--pine)}
+.case-archive{background-image:radial-gradient(#253f371c .65px,transparent .8px);background-size:24px 24px}
+.opening-cover{will-change:transform,opacity}.opening-cover::before{content:'';position:absolute;left:0;top:-18px;width:48%;height:20px;background:var(--folder);clip-path:polygon(0 0,90% 0,100% 100%,0 100%)}
+@media(max-width:700px){
+ body{background-attachment:scroll}.assembly-hero::before{background-size:auto 620px;background-position:35% bottom;mask-image:linear-gradient(transparent 30%,#000 85%)}
+ .collection{background-size:auto,600px auto;background-position:0 0,-300px 200px}
+ .site-header nav a,.language-toggle{font-size:11px;min-height:40px}.motion-toggle{font-size:9px;max-width:76px;min-height:40px}
+ .package-cover{grid-template-columns:minmax(0,1fr)}.package-foot{gap:10px}.package-foot .package-action{padding:12px;font-size:11px;gap:8px}.package-action .icon{width:17px}
+ .folder-tab,.package-category{font-size:8px}.case-chapters{gap:16px;font-size:11px;padding-bottom:22px}
+ .assembly-hero{min-height:900px}.hero-art{top:380px;height:415px}.hero-copy h1{font-size:clamp(47px,11.6vw,80px)}
+}
+@media(prefers-reduced-motion:reduce){.opening-cover{will-change:auto}}

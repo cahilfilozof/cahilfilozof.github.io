@@ -48,3 +48,18 @@ test('every generated HTML local link and asset resolves; local tools stay unlin
   }
   for(const lang of ['en','tr'])assert.equal((home(lang).match(/class="project-package"/g)||[]).length,7);
 });
+
+test('every project offers direct exploration and optional replay, with real chapter destinations',()=>{
+  for(const lang of ['tr','en']){
+    const html=home(lang);
+    assert.equal((html.match(/package-action-primary/g)||[]).length,7);
+    assert.equal((html.match(/data-replay="true"/g)||[]).length,7);
+    for(const p of projects){
+      const page=caseStudy(p,lang);
+      for(const id of ['approach','visualization','drawings']){
+        assert.ok(page.includes(`href="#${id}"`));
+        assert.ok(page.includes(`id="${id}"`));
+      }
+    }
+  }
+});
