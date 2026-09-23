@@ -61,3 +61,6 @@
 .box-flight .box-lid{height:100%;display:flex;flex-direction:column}
 .box-flight .box-artwork{flex:1;min-height:0;aspect-ratio:auto}
 @media(prefers-reduced-motion:reduce){.shelf-backdrop>div,.collection{transition:none}}
+/* Desktop scrollbars must not change the opening stage's geometry. */
+#puzzle-dialog{overflow-x:clip;scrollbar-gutter:stable}
+.box-flight .box-solid{opacity:1!important;visibility:visible!important;transition:none!important}
