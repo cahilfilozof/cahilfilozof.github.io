@@ -1,6 +1,6 @@
-import {boxLid} from './boxes-render.mjs';
-import {piecePath,topology,clamp,closeEnough} from './geometry.mjs';
-import {pick,esc,arrow} from './render.mjs';
+import {boxLid} from './boxes-render.8135d600ec1c.mjs';
+import {piecePath,topology,clamp,closeEnough} from './geometry.8135d600ec1c.mjs';
+import {pick,esc,arrow} from './render.8135d600ec1c.mjs';
 const NS='http://www.w3.org/2000/svg';
 const make=(tag,attrs={})=>{const el=document.createElementNS(NS,tag);Object.entries(attrs).forEach(([k,v])=>el.setAttribute(k,v));return el;};
 export class PuzzleBoard {
